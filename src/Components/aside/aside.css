@@ -1,0 +1,39 @@
+/* aside */
+
+.mr-top {
+    margin-top: 3px;
+}
+
+.vid-aside-container {
+    display: flex;
+    flex-direction: column;
+    width: 6rem;
+    gap: 2rem;
+    margin-top: 1rem;    
+}
+
+.aside-title-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    color: var(--white-color);
+}
+
+.vid-aside-icon {
+    color: inherit;
+    font-size: 1.3rem;
+}
+
+.vid-aside-title {
+    color: inherit;
+    font-size: .9rem;
+}
+
+.playlist-icon {
+    font-size: 2rem;
+}
+
+.aside-title-box:hover {
+    color: var(--primary-color);
+}
