@@ -5,10 +5,29 @@
 :root {
     --active-color : #fdca3e;
     --white-color : #e8e6e3;
-    --nav-bg-color : #1919215b;
+    --white-default : #ffffff;
+    --nav-bg-color : #19192194;
+    --grey-default : #a8a4a4;
+    --black-color : #000;
 }
 
 body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
+.aside-main-flex {
+    display: flex;
+}
+
+/* main */
+
+.vid-listing-container {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat( auto-fill, minmax(240px, 1fr) );
+    gap: 1.2rem;
+    height: calc(100vh - 4rem);
+    overflow: auto;
+    padding: 1.2rem;
+    justify-content: center;
+}
