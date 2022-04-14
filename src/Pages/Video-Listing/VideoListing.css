@@ -19,6 +19,46 @@ body {
     display: flex;
 }
 
+.filter-and-main-flex {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+/* filter  */
+
+.filter-box {
+    display: flex;
+    gap: 1rem;
+    padding: .2rem 1.2rem 1rem  1.2rem;
+    margin-top: 1rem;
+    width: 100%;
+}
+
+.filter-chip {
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+    background-color: var(--default-black);
+    color: var(--white-default);
+    cursor: pointer;
+}
+
+
+.chip-color {
+    background-color: var(--active-color);
+    color: var(--default-black);
+}
+
+.filter-chip:hover {
+    background-color: var(--active-color);
+    color: var(--default-black);
+}
+
 /* main */
 
 .vid-listing-container {
@@ -26,8 +66,31 @@ body {
     display: grid;
     grid-template-columns: repeat( auto-fill, minmax(240px, 1fr) );
     gap: 1.2rem;
-    height: calc(100vh - 4rem);
+    height: calc(100vh - 8.3rem);
     overflow: auto;
     padding: 1.2rem;
     justify-content: center;
 }
+
+
+/* scroll bar */
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #a8a7a7;  
+    border-radius: 10px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }

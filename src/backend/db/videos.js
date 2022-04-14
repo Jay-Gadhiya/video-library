@@ -16,7 +16,7 @@ export const videos = [
   }, 
   {
     _id: "peBzo2rvzgc",
-    title: "Top 5 Best 5G Smartphones Under ₹20000 Budget⚡March 2022",
+    title: "Top 5 Best 5G Smartphones Under ₹20000",
     channel: "Trakin Tech",  
     category : "smartphone",
     duration : "6:49",
@@ -34,7 +34,7 @@ export const videos = [
   }, 
   {
     _id: "XlCekHT65LU",
-    title: "Best Smartphones Under-30000 | APRIL 2022 | Real Flagship Killer",
+    title: "Best Smartphones Under-30000 | APRIL 2022",
     channel: "Gizmo Gyan",  
     category : "smartphone",
     duration : "10:48",
@@ -45,7 +45,7 @@ export const videos = [
   // laptop
   {
     _id: "40OKUlJwOZU",
-    title: "Top 5 Best Laptops Under 40000 ⚡ Best Budget Laptops For Students",
+    title: "Top 5 Best Laptops Under 40000 ⚡",
     channel: "Trakin Tech",  
     category : "laptop",
     duration : "04:55",
@@ -54,7 +54,7 @@ export const videos = [
   }, 
   {
     _id: "nmoQm0E4-c8",
-    title: "Is This The Best Budget Laptop??? Honor MagicBook 15",
+    title: "Is This The Best Budget Laptop??? Honor MagicBook",
     channel: "Technical Guruji",  
     category : "laptop",
     duration : "11:20",
@@ -72,7 +72,7 @@ export const videos = [
   },
   {
     _id: "Im8tjrDXMXQ",
-    title: "Best LAPTOP For You? Top Laptop Buying Guide For 2022",
+    title: "Best LAPTOP For You? Top Laptop Buying Guide",
     channel: "Technical Guruji",  
     category : "laptop",
     duration : "11:01",
@@ -160,13 +160,13 @@ export const videos = [
   // new for you
 
   {
-    _id: "YrtANPtnhyg",
-    title: "The thrilling potential of SixthSense technology",
-    channel: "TEDx Talks",  
+    _id: "suT82AdWfTU",
+    title: "25 Inventions that are Out of this World. 🌏",
+    channel: "Mrwhosetheboss6",  
     category : "new",
-    duration : "15:19",
-    views : "5M",
-    channelAvatar : "https://yt3.ggpht.com/ytc/AKedOLSAltH3yarKh0eytWLSLtB9-kPpMLM5EejH-GAZIg=s88-c-k-c0x00ffffff-no-rj"
+    duration : "20:53",
+    views : "5.9.M",
+    channelAvatar : "https://yt3.ggpht.com/Ikb1C4ih2VMvfjma8OO5b39JnHL2CQcQgksB_I7TM-gGA3ERTY589OeLKCYyRQQO0nkE54-f=s88-c-k-c0x00ffffff-no-rj"
   },
   {
     _id: "OQGdlA1g7Io",
