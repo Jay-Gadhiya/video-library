@@ -4,12 +4,17 @@
     margin-top: 3px;
 }
 
+
+
 .vid-aside-container {
     display: flex;
     flex-direction: column;
     width: 6rem;
     gap: 2rem;
-    margin-top: 1rem;    
+    padding-top: 1rem;
+    background-color: var(--nav-bg-color);
+    height: calc(100vh - 4rem);
+
 }
 
 .aside-title-box {
@@ -25,9 +30,14 @@
     font-size: 1.3rem;
 }
 
+
 .vid-aside-title {
     color: inherit;
     font-size: .9rem;
+}
+
+.active {
+    color: var(--active-color);
 }
 
 .playlist-icon {
@@ -36,4 +46,10 @@
 
 .aside-title-box:hover {
     color: var(--primary-color);
+}
+
+@media only screen and (max-width: 750px) {
+    .vid-aside-container {
+        display: none;
+    }
 }

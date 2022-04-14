@@ -10,8 +10,8 @@ export const Aside = () => {
     return (
         <aside className="vid-aside-container" >
             <div className="aside-title-box">
-                <ImHome className="vid-aside-icon" />
-                <p className="vid-aside-title">Home</p>
+                <ImHome className="vid-aside-icon active" />
+                <p className="vid-aside-title active">Home</p>
             </div>
             <div className="aside-title-box">
                 <CgPlayList className="vid-aside-icon playlist-icon" />
