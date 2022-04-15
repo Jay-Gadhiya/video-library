@@ -1,0 +1,55 @@
+/* aside */
+
+.mr-top {
+    margin-top: 3px;
+}
+
+
+
+.vid-aside-container {
+    display: flex;
+    flex-direction: column;
+    width: 6rem;
+    gap: 2rem;
+    padding-top: 1rem;
+    background-color: var(--nav-bg-color);
+    height: calc(100vh - 4rem);
+
+}
+
+.aside-title-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    color: var(--white-color);
+}
+
+.vid-aside-icon {
+    color: inherit;
+    font-size: 1.3rem;
+}
+
+
+.vid-aside-title {
+    color: inherit;
+    font-size: .9rem;
+}
+
+.active {
+    color: var(--active-color);
+}
+
+.playlist-icon {
+    font-size: 2rem;
+}
+
+.aside-title-box:hover {
+    color: var(--primary-color);
+}
+
+@media only screen and (max-width: 750px) {
+    .vid-aside-container {
+        display: none;
+    }
+}
