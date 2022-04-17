@@ -41,9 +41,8 @@ const DataStoreProvider = ({children}) => {
                  alert(error);
               }
 
-          })(),
-        []
-        });
+          })();
+        }, []);
 
 
     return (

@@ -1,6 +1,7 @@
 import "./videoCard.css";
 import { AiOutlineMore } from 'react-icons/ai';
 import { getUrl } from "../../Utility-functions/getUrl";
+import { Link } from "react-router-dom";
 
 export const VideoCard = ({video}) => {
     
@@ -8,10 +9,12 @@ export const VideoCard = ({video}) => {
     
     return (
         <div className="vid-main-container">
-            <figure className="vid-img-contaier">
-                <img className="vid-img" src={imgUrl} alt="vidImg" />
-                <span className="vid-duration" >{video.duration}</span>
-            </figure>
+            <Link to={`/video/${video._id}`} >
+                <figure className="vid-img-contaier">
+                    <img className="vid-img" src={imgUrl} alt="vidImg" />
+                    <span className="vid-duration" >{video.duration}</span>
+                </figure>
+            </Link>
         
             <div className="vid-body-continer">
                 <img 

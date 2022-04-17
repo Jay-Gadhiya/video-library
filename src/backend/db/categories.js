@@ -33,7 +33,7 @@ export const categories = [
   },
   {
     _id: uuid(),
-    categoryName: "New to you",
+    categoryName: "New",
    
   },
 ];
