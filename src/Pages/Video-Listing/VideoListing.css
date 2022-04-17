@@ -33,6 +33,7 @@ body {
     padding: .2rem 1.2rem 1rem  1.2rem;
     margin-top: 1rem;
     width: 100%;
+    overflow: auto;
 }
 
 .filter-chip {
@@ -55,8 +56,7 @@ body {
 }
 
 .filter-chip:hover {
-    background-color: var(--active-color);
-    color: var(--default-black);
+    background-color: var(--primary-color);
 }
 
 /* main */

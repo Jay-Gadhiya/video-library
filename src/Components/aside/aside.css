@@ -4,8 +4,6 @@
     margin-top: 3px;
 }
 
-
-
 .vid-aside-container {
     display: flex;
     flex-direction: column;
@@ -30,6 +28,9 @@
     font-size: 1.3rem;
 }
 
+.watch {
+    font-size: 1.6rem;
+}
 
 .vid-aside-title {
     color: inherit;
