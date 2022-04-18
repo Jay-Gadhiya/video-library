@@ -4,7 +4,7 @@ const authReducer = (authState, authAction) => {
             return { ...authState, token : authAction.payload }
 
         case "USER_LOGIN":
-            return { ...authState, token : authAction.payload }
+            return { ...authState, token : authAction.payload}
 
         case "USER_SIGNUP":
         return { ...authState, token : authAction.payload }

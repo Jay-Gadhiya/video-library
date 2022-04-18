@@ -7,7 +7,7 @@ const useAuth = () => useContext(AuthContext);
 
 const AuthProvider = ({children}) => {
 
-    const [authState, authDispatch] = useReducer(authReducer, { token : null });
+    const [authState, authDispatch] = useReducer(authReducer, { token : null, firstName: "", lastName : "", email: "", password: "" });
     const getToken = localStorage.getItem("token");
 
     useEffect(() => {
