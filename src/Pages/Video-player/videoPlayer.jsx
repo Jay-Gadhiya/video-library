@@ -70,8 +70,8 @@ export const VideoPlayer = () => {
                         <input className="notes-input" type="text" name="title" placeholder="Title" />
                         <textarea className="notes-input notes-textarea" placeholder="Write note..." name="note" cols="21" rows="2"></textarea>
                         <div className="notes-btns">
-                            <button className="btn btn-primary pading">Save</button>
-                            <button className="btn btn-primary-outline pading">Discard</button>
+                            <button className="btn pading btn-primary ">Save</button>
+                            <button className="btn btn-primary-outline pading border">Discard</button>
                         </div>
                     </div>
 
