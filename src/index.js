@@ -5,6 +5,7 @@ import App from "./App";
 import { makeServer } from "./server";
 import { BrowserRouter } from "react-router-dom";
 import { DataStoreProvider } from "./context/dataStore";
+import { AuthProvider } from "./context/authentication-context";
 
 // Call make Server
 makeServer();
@@ -13,7 +14,9 @@ ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <DataStoreProvider>
-        <App />
+        <AuthProvider>
+          <App />
+        </AuthProvider>  
       </DataStoreProvider>
     </BrowserRouter>
   </React.StrictMode>,

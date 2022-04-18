@@ -94,11 +94,30 @@
     font-weight: 600;
 }
 
-.pading {
-    padding: .5rem 1rem;
+.note-btn-outline {
+    border-radius: 2px;
+    font-weight: 700;
+    border-width: 1px;
+    background-color: var(--black-default);
+    color: var(--defualt-black);
+}
+
+.notes-btns .pading {
+    padding: .3rem .8rem;
     text-transform: unset;
-    color: var(--white-default);
+    color: var(--white-color);
     font-size: 1rem;
+    border-radius: 4px;
+    font-weight: 500;
+}
+
+.notes-btns .border {
+    border-width: 2px;
+}
+
+.note-btn-outline:hover {
+    background-color: var(--primary-color);
+    color: var(--white-default);
 }
 
 .notes-input {
@@ -133,7 +152,7 @@
     }
 
     .option-name {
-        font-size: .7rem;
+        font-size: .9rem;
     }
 
     .vid-icon-watch-Later {
@@ -145,7 +164,7 @@
     }
     
     .vid-player-icon {
-        font-size: 1.2rem;
+        font-size: 1.3rem;
     }
 
     ::-webkit-scrollbar {
