@@ -47,6 +47,7 @@ body {
     background-color: var(--default-black);
     color: var(--white-default);
     cursor: pointer;
+    transition: .4s ease-in-out;
 }
 
 
