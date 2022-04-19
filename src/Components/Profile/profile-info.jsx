@@ -19,7 +19,6 @@ export const ProfileInfo = () => {
                 <p><strong>Email</strong> : adarshbalika@gmail.com</p>
                 </>
             }
-            
         </div>
     )
 }
