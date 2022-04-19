@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 export const Navbar = () => {
 
-    const { authState } = useAuth();
+    const { authState, getUser } = useAuth();
 
     return (
         <nav className="vid-nav-container" >
@@ -17,15 +17,22 @@ export const Navbar = () => {
                 <input className="vid-search-input" type="search" name="search" placeholder="Search..." />
             </div>
             <div className="vid-profile-container">
-                <FaUser className="vid-user-icon" />
                 {
                     authState.token
                     ?
-                    <Link to="/profile/"><p className="vid-user-name" >My Profile</p></Link>
+                    
+                    <Link to="/profile/">
+                        <FaUser className="vid-user-icon" />
+                        <p className="vid-user-name" >Hy, {getUser.firstName}</p>
+                    </Link>
+                    
                     :
-                    <Link to="/login"><p className="vid-user-name" >Login</p></Link>
+                    <Link to="/login">
+                        <FaUser className="vid-user-icon" />
+                        <p className="vid-user-name" >Login</p>
+                    </Link>
+
                 }
-                
             </div>
         </nav>
     )

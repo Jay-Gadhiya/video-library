@@ -5,7 +5,6 @@ body {
     color:var(--default-black);
     margin: 0;
     padding: 0;
-    font-family: 'Poppins', sans-serif;
     position: relative;
     height: 100vh;
 }
@@ -28,6 +27,7 @@ body {
     border-radius: 10px;
     box-shadow: hsla(240, 5%, 41%, 0.2) 0px 7px 29px 0px;
     background-color: var(--white-default);
+    font-family: 'Poppins', sans-serif;
 }
 
 .heading-box {

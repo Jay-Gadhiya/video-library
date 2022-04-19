@@ -20,6 +20,7 @@
 .vid-search-container {
     border-radius: 6px;
     display: flex;
+    justify-content: center;
     align-items: center;
     background-color: var(--default-black);
     padding: 3px;
@@ -52,6 +53,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-align: center;
     padding-right: 2rem;
     cursor: pointer;
 }
@@ -64,7 +66,7 @@
 .vid-user-name {
     color: var(--white-color);
     font-size: .9rem;
-    margin-top: 5px;
+    margin-top: 2px;
 }
 
 
