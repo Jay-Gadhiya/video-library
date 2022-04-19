@@ -9,9 +9,9 @@ export const Settings = () => {
 
     const logoutClickHandler = () => {
         localStorage.removeItem("token");
+        localStorage.removeItem("user");
         authDispatch({ type : "USER_LOGOUT"});
         navigate("/");
-
     }
 
     return (

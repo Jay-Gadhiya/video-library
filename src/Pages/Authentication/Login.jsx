@@ -11,7 +11,6 @@ const Login = () => {
     const navigate = useNavigate();
     const [userData, setUserData] = useState({email : "", password : ""});
     const { authDispatch } = useAuth();
-    console.log(userData);
 
     // Dummy data for guest credential
     const dummyData = {
@@ -36,9 +35,14 @@ const Login = () => {
         try {
             const response = await axios.post("/api/auth/login", userData);
             
-            localStorage.setItem("token", response.data.encodedToken);
-            authDispatch({ type : "USER_LOGIN", payload : response.data.encodedToken })
-            navigate("/");
+            if(response.status === 200){
+                localStorage.setItem("token", response.data.encodedToken);
+                localStorage.setItem("user", JSON.stringify(response.data.foundUser));
+                authDispatch({ type : "USER_LOGIN", payload : response.data.encodedToken })
+                navigate("/");
+            }
+
+            
 
         } catch (error) {
             // alert("Please Enter valid username or password");

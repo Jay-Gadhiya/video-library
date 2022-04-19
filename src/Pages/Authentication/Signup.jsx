@@ -10,7 +10,7 @@ const Signup = () => {
 
     const [userData, setUserData] = useState({  firstName : "", lastName : "", email : "", password : "" });
     const navigate = useNavigate();
-    const { authDispatch } = useAuth();
+    const { authDispatch, authState } = useAuth();
 
     // user inputs
     const userInputValues = (e) => {
@@ -28,11 +28,14 @@ const Signup = () => {
             email: userData.email,
             password: userData.password,
           });
+          console.log(response);
 
-          localStorage.setItem("token", response.data.encodedToken);
-          navigate("/");
-          authDispatch({ type : "USER_SIGNUP", payload : response.data.encodedToken });
-
+          if(response.status === 201) {
+            localStorage.setItem("token", response.data.encodedToken);
+            localStorage.setItem("user", JSON.stringify(response.data.createdUser));
+            authDispatch({ type : "USER_SIGNUP", payload : response.data.encodedToken });
+            navigate("/");
+          }
          
         } catch (error) {
             alert(error);
