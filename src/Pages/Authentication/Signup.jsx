@@ -11,6 +11,7 @@ const Signup = () => {
     const [userData, setUserData] = useState({  firstName : "", lastName : "", email : "", password : "" });
     const navigate = useNavigate();
     const { authDispatch, authState } = useAuth();
+    
 
     // user inputs
     const userInputValues = (e) => {
@@ -28,7 +29,6 @@ const Signup = () => {
             email: userData.email,
             password: userData.password,
           });
-          console.log(response);
 
           if(response.status === 201) {
             localStorage.setItem("token", response.data.encodedToken);

@@ -9,6 +9,7 @@ import { ProfilePage } from "./Pages/Profile/profile";
 import { ProfileInfo } from "./Components/Profile/profile-info";
 import { Settings } from "./Components/Profile/settings";
 import { LikedPage } from "./Pages/LikedVideos/liked";
+import { RequiresAuth } from "./Utility-functions/RequiresAuth";
 
 function App() {
   return (
@@ -18,7 +19,15 @@ function App() {
         <Route path="/video/:videoId" element={<VideoPlayer />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/like" element={<LikedPage />} />
+      
+        <Route path="/like" 
+          element={
+            <RequiresAuth>
+              <LikedPage />
+            </RequiresAuth>
+          } 
+        />
+
         <Route path="/profile/" element={<ProfilePage />} >
           <Route path="" element={<ProfileInfo />} />
           <Route path="settings" element={<Settings />} />

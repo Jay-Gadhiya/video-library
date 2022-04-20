@@ -1,19 +1,26 @@
 import "./horizontalCard.css";
 import { FaTrashAlt } from 'react-icons/fa';
+import { getUrl } from "../../Utility-functions/getUrl";
+import { useAuth } from "../../context/authentication-context";
+import { useData } from "../../context/dataStore";
 
-export const HorizontalCard = () => {
+export const HorizontalCard = ({ videos, deleteHandler }) => {
+
+    const likedImg = getUrl(videos._id);
+    const { authState } = useAuth();
+    const { dataStoreDispatch } = useData();
 
     return (
         <div className="horizontal-card-container">
             <div className="horizontal-img-wrapper">
-                <img className="horizontal-card-img" src="https://i.ytimg.com/vi/BYzsaTaosAU/hqdefault.jpg?sqp=-oaymwEXCNACELwBSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLB0eKbR2Xxmcnj4VIeIJ2OBhmO5VQ" alt="img" />
-                <span className="time-stamp">17:24</span>
+                <img className="horizontal-card-img" src={likedImg} alt="img" />
+                <span className="time-stamp">{ videos.duration }</span>
             </div>
             <div className="horizontal-card-body">
-                <p className="horizontal-card-title">Beloved : Novel by Toni Morrison in Hindi</p>
-                <p className="horizontal-card-channel">Study Lovers</p>
+                <p className="horizontal-card-title">{ videos.title }</p>
+                <p className="horizontal-card-channel">{ videos.channel }</p>
             </div>
-            <FaTrashAlt className="trash-icon" />
+            <FaTrashAlt onClick={() => deleteHandler(videos, authState, dataStoreDispatch)} className="trash-icon" />
         </div>
     )
 }

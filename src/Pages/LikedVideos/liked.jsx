@@ -4,8 +4,12 @@ import likeImg2   from "../../assets/like-img.svg";
 import likeImg   from "../../assets/like-wall.svg";
 import "./liked.css";
 import { HorizontalCard } from "../../Components/horizontalCard/horizontalCard";
+import { useData } from "../../context/dataStore";
+import { removeFromLike } from "../../Utility-functions/likeHandler";
 
 export const LikedPage = () => {
+
+    const  { dataStoreState } = useData();
 
     return(
         <>
@@ -21,7 +25,16 @@ export const LikedPage = () => {
                         <p className="liked-vid-count" >7 Videos</p>
                     </div>
                     <div className="card-show">
-                        <HorizontalCard />
+                        {
+                            dataStoreState.likedVideos.map( video => (
+                                <HorizontalCard 
+                                key={video._id} 
+                                videos = {video}
+                                deleteHandler = {removeFromLike}
+                                />
+                            ) )
+                        }
+                        
                     </div>
                 </div>        
             </div>

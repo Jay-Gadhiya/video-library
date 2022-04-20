@@ -1,7 +1,6 @@
 import { createContext, useContext, useReducer, useEffect, useState } from "react";
 import { authReducer } from "../Reducer/authReducer";
 
-
 const AuthContext = createContext();
 const useAuth = () => useContext(AuthContext);
 
