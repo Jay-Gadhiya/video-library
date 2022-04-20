@@ -1,23 +1,11 @@
 
-
-.horizontal-card-img {
-    width: 10rem;
-    cursor: pointer;
-}
-
-.horizontal-hero-img {
-    width: 25rem;
-    height: auto;
-    align-self: baseline;
-}
-
 .horizontal-card-container {
     display: flex;
     gap: 12px;
     height: max-content;
     padding: 7px;
     width: 100%;
-    max-width: 51rem;
+    max-width: 50rem;
     border-bottom: 1px solid var(--grey-hover);
 }
 
@@ -27,6 +15,13 @@
 
 .horizontal-card-body {
     color: var(--white-default);
+    width: 100%;
+    max-width: 35rem;
+}
+
+.horizontal-card-img {
+    width: 10rem;
+    cursor: pointer;
 }
 
 .trash-icon {
@@ -65,4 +60,36 @@
     color: var(--white-default);
     padding: 2px 5px;
     border-radius: 3px;
+}
+
+@media only screen and (max-width : 500px) {
+
+    .horizontal-card-container {
+        gap: 5px;
+    }
+
+    .horizontal-card-title {
+        font-size: .8rem;
+        margin-bottom: 8px;
+    }
+    
+    .horizontal-card-channel {
+        font-size: .7rem;
+    }
+
+    .horizontal-card-img {
+        width: 7rem;
+    }
+
+    .time-stamp {
+        position: absolute;
+        bottom: 10px;
+        right: 5px;
+        background-color: var(--black-color);
+        width: max-content;
+        font-size: .7rem;
+        color: var(--white-default);
+        padding: 2px 4px;
+        border-radius: 3px;
+    }
 }
