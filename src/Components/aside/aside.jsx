@@ -9,26 +9,31 @@ import { Link, NavLink } from "react-router-dom";
 
 export const Aside = () => {
 
+    const getActiveStyle = ({ isActive }) => ({
+        color: isActive ? "#fdca3e" : "#ffffff",
+    });
+
 
     return (
         <aside className="vid-aside-container" >
             
-            <NavLink to="/" >
-                <div className="aside-title-box">
-                    <ImHome className="vid-aside-icon active" />
-                    <p className="vid-aside-title active">Home</p>
-                </div>
-            </NavLink >
             
-
+        
+            <NavLink style={getActiveStyle} to="/" className="aside-title-box" >
+                <ImHome className="vid-aside-icon active" />
+                <p className="vid-aside-title active">Home</p>
+            </NavLink >
+                
             <div className="aside-title-box">
                 <CgPlayList className="vid-aside-icon playlist-icon" />
                 <p className="vid-aside-title">Playlist</p>
             </div>
-            <div className="aside-title-box">
+
+            <NavLink style={getActiveStyle} to="/like" className="aside-title-box" >
                 <AiFillLike className="vid-aside-icon" />
                 <p className="vid-aside-title mr-top">Likes</p>
-            </div>
+            </NavLink>
+
             <div className="aside-title-box">
                 <MdOutlineWatchLater className="vid-aside-icon watch" />
                 <p className="vid-aside-title mr-top">Watch Later</p>

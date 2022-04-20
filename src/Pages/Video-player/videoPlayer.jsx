@@ -61,8 +61,6 @@ export const VideoPlayer = () => {
                                 
                             </div>
                         </div>
-
-
                     </div>
 
                     <div className="notes-container">
