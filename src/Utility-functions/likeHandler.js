@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const addToLike = async (video, authState, dataStoreDispatch) => {
+export const addToLike = async (video, authState, dataStoreDispatch, navigate) => {
 
     if(authState.token){
         try {
@@ -12,6 +12,9 @@ export const addToLike = async (video, authState, dataStoreDispatch) => {
         } catch (error) {
             alert(error);
         }
+    }
+    else {
+        navigate("/login");
     }
 }
 

@@ -8,7 +8,7 @@ import React from 'react'
 import ReactPlayer from 'react-player/lazy'
 import "../Video-Listing/VideoListing.css";
 import "./videoPlayer.css";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useData } from "../../context/dataStore";
 import axios from "axios";
 import { useAuth } from "../../context/authentication-context";
@@ -19,6 +19,7 @@ export const VideoPlayer = () => {
     const { videoId } = useParams();
     const { dataStoreState, dataStoreDispatch } = useData();
     const { authState } =useAuth();
+    const navigate = useNavigate();
     const video = dataStoreState.videos.length !== 0 && dataStoreState.videos.find( video => videoId === video._id );
     const isLiked = dataStoreState.likedVideos.find(item => item._id === video._id);
 
@@ -59,7 +60,7 @@ export const VideoPlayer = () => {
                                         </>
                                         :
                                         <>
-                                            <AiFillLike onClick={() =>addToLike(video, authState, dataStoreDispatch)} className="vid-player-icon" />
+                                            <AiFillLike onClick={() =>addToLike(video, authState, dataStoreDispatch, navigate)} className="vid-player-icon" />
                                             <p className="option-name" >Like</p>
                                         </>
 
