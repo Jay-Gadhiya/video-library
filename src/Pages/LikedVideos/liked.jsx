@@ -10,6 +10,7 @@ import { removeFromLike } from "../../Utility-functions/likeHandler";
 export const LikedPage = () => {
 
     const  { dataStoreState } = useData();
+    const videosCount = dataStoreState.likedVideos.length;
 
     return(
         <>
@@ -22,7 +23,7 @@ export const LikedPage = () => {
                     <div className="like-img-and-info">
                         <img className="horizontal-hero-img" src={likeImg} alt="like" />
                         <p className="liked-vid-heading">Liked videos</p>
-                        <p className="liked-vid-count" >7 Videos</p>
+                        <p className="liked-vid-count" >{videosCount} Videos</p>
                     </div>
                     <div className="card-show">
                         {
