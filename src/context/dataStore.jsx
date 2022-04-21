@@ -13,7 +13,8 @@ const DataStoreContext = createContext();
 const initialVal = {
     videos : [],
     categories : [],
-    likedVideos : []
+    likedVideos : [],
+    watchLater : []
 }
 
 

@@ -34,10 +34,10 @@ export const Aside = () => {
                 <p className="vid-aside-title mr-top">Likes</p>
             </NavLink>
 
-            <div className="aside-title-box">
+            <NavLink style={getActiveStyle} to="/watchlater" className="aside-title-box">
                 <MdOutlineWatchLater className="vid-aside-icon watch" />
                 <p className="vid-aside-title mr-top">Watch Later</p>
-            </div>
+            </NavLink>
             <div className="aside-title-box">
                 <FaHistory className="vid-aside-icon" />
                 <p className="vid-aside-title mr-top">History</p>

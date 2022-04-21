@@ -72,3 +72,47 @@
     cursor: pointer;
     margin-left: auto;
 }
+
+.menu-wrapper {
+    position: relative;
+}
+
+.menu-options-wrapper {
+    position: absolute;
+    left: -11.1rem;
+    top: 1.1rem;
+    background-color: var(--menu-bg-color);
+    width: max-content;
+    padding: .6rem 0;
+    border-radius: 4.4px;
+}
+
+.option-box {
+    color: var(--white-default);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+    padding: .3rem 1rem;
+    transition: .4s ease-in-out;
+
+}
+
+.option-box:hover {
+    background-color: var(--hover-black);
+}
+
+.option-menu-title {
+    font-size: 1rem;
+}
+
+.option-menu-icon {
+    font-size: 1.3rem;
+}
+.option-menu-icon-WL {
+    font-size: 1.1rem;
+}
+
+.watched {
+    color: var(--active-color);
+}

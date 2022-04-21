@@ -38,7 +38,6 @@ export const VideoPlayer = () => {
                                 url={`https://www.youtube.com/watch?v=${videoId}`}
                                 controls={true} 
                                 playing={true}
-                                muted={true}
                                 className="react-player"
                                 width="100%"
                                 height="100%"
