@@ -22,7 +22,7 @@ export const WatchLater = () => {
                 <div className="horizontal-main-container">
                     <div className="like-img-and-info">
                         <img className="horizontal-hero-img" src={watchLaterImg} alt="like" />
-                        <p className="liked-vid-heading">Liked videos</p>
+                        <p className="liked-vid-heading">Watch Later videos</p>
                         <p className="liked-vid-count" >{videosCount} Videos</p>
                     </div>
                     <div className="card-show">
