@@ -20,9 +20,7 @@ export const VideoCard = ({video}) => {
 
     const isWatched = dataStoreState.watchLater.find(item => item._id === video._id);
 
-    const menuBoxRef = useClickOutside(() => {
-        setMenu(false);
-    });
+    const menuBoxRef = useClickOutside(() => setMenu(false));
     
     return (
         <div className="vid-main-container">
