@@ -8,14 +8,21 @@ import React from 'react'
 import ReactPlayer from 'react-player/lazy'
 import "../Video-Listing/VideoListing.css";
 import "./videoPlayer.css";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useData } from "../../context/dataStore";
+import axios from "axios";
+import { useAuth } from "../../context/authentication-context";
+import { addToLike, removeFromLike } from "../../Utility-functions/likeHandler";
 
 export const VideoPlayer = () => {
 
     const { videoId } = useParams();
-    const { dataStoreState } = useData();
-    const currentVideo = dataStoreState.videos.length !== 0 && dataStoreState.videos.find( video => videoId === video._id );
+    const { dataStoreState, dataStoreDispatch } = useData();
+    const { authState } =useAuth();
+    const navigate = useNavigate();
+    const video = dataStoreState.videos.length !== 0 && dataStoreState.videos.find( video => videoId === video._id );
+    const isLiked = dataStoreState.likedVideos.find(item => item._id === video._id);
+
     
     return (
         <>
@@ -38,13 +45,27 @@ export const VideoPlayer = () => {
                             />
                         </div>
                         <div className="video-body">
-                            <p className="video-player-title" >{currentVideo.title}</p>
-                            <p className="vid-channel">{currentVideo.channel}</p>
-                            <p className="vid-views">{currentVideo.views} views</p>
+                            <p className="video-player-title" >{video.title}</p>
+                            <p className="vid-channel">{video.channel}</p>
+                            <p className="vid-views">{video.views} views</p>
                             <div className="video-player-icons">
+
                                 <div className="vid-option">
-                                    <AiFillLike className="vid-player-icon" />
-                                    <p className="option-name" >Like</p>
+                                    {
+                                        authState.token && isLiked
+                                        ?
+                                        <>
+                                            <AiFillLike onClick={() => removeFromLike(video, authState, dataStoreDispatch)} className="vid-player-icon is-active" />
+                                            <p className="option-name" >Liked</p>
+                                        </>
+                                        :
+                                        <>
+                                            <AiFillLike onClick={() =>addToLike(video, authState, dataStoreDispatch, navigate)} className="vid-player-icon" />
+                                            <p className="option-name" >Like</p>
+                                        </>
+
+                                    }
+                                    
                                 </div>
                                 <div className="vid-option">
                                     <MdOutlineWatchLater className="vid-icon-watch-Later" />
@@ -61,8 +82,6 @@ export const VideoPlayer = () => {
                                 
                             </div>
                         </div>
-
-
                     </div>
 
                     <div className="notes-container">

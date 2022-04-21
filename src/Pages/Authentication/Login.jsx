@@ -2,7 +2,7 @@ import "./authentication.css";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router";
+import { useNavigate, useLocation } from "react-router";
 import { useAuth } from "../../context/authentication-context";
 
 
@@ -11,6 +11,8 @@ const Login = () => {
     const navigate = useNavigate();
     const [userData, setUserData] = useState({email : "", password : ""});
     const { authDispatch } = useAuth();
+    const location = useLocation();
+    let from = location.state?.from?.pathname || '/';
 
     // Dummy data for guest credential
     const dummyData = {
@@ -39,14 +41,13 @@ const Login = () => {
                 localStorage.setItem("token", response.data.encodedToken);
                 localStorage.setItem("user", JSON.stringify(response.data.foundUser));
                 authDispatch({ type : "USER_LOGIN", payload : response.data.encodedToken })
-                navigate("/");
+                navigate(from, { replace: true });
             }
 
             
 
         } catch (error) {
-            // alert("Please Enter valid username or password");
-            console.log(error);
+            alert("Please Enter valid username or password");
         }
 
     }

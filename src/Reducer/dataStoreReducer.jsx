@@ -8,6 +8,9 @@ export const dataStoreReducer = (state, action) => {
         case "CATEGORIES_DATA":
             return {...state, categories : action.payload};
 
+        case "LIKED_VIDEOS":
+            return {...state, likedVideos : action.payload};
+
         default:
             state;
     }
