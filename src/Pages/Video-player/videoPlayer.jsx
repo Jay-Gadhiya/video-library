@@ -52,7 +52,7 @@ export const VideoPlayer = () => {
 
                                 <div className="vid-option">
                                     {
-                                        isLiked
+                                        authState.token && isLiked
                                         ?
                                         <>
                                             <AiFillLike onClick={() => removeFromLike(video, authState, dataStoreDispatch)} className="vid-player-icon is-active" />
