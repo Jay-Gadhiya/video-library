@@ -10,6 +10,7 @@ import { ProfileInfo } from "./Components/Profile/profile-info";
 import { Settings } from "./Components/Profile/settings";
 import { LikedPage } from "./Pages/LikedVideos/liked";
 import { RequiresAuth } from "./Utility-functions/RequiresAuth";
+import { WatchLater } from "./Pages/watch-later/watchLater";
 
 function App() {
   return (
@@ -24,6 +25,14 @@ function App() {
           element={
             <RequiresAuth>
               <LikedPage />
+            </RequiresAuth>
+          } 
+        />
+
+        <Route path="/watchlater" 
+          element={
+            <RequiresAuth>
+              <WatchLater />
             </RequiresAuth>
           } 
         />
