@@ -25,8 +25,6 @@ export const VideoPlayer = () => {
     const isLiked = dataStoreState.likedVideos.find(item => item._id === video._id);
     const isWatched = dataStoreState.watchLater.find(item => item._id === video._id);
 
-
-    
     return (
         <>
             <Navbar />

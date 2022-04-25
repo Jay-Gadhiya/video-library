@@ -22,10 +22,10 @@ export const postLikeVideo = (token, video) => {
   
 
 export const deleteLikeVideo = (token, videoId) => {
-return axios.delete(`/api/user/likes/${videoId}`, {
-    headers: {
-    authorization: token,
-    },
-});
+    return axios.delete(`/api/user/likes/${videoId}`, {
+        headers: {
+        authorization: token,
+        },
+    });
 };
 

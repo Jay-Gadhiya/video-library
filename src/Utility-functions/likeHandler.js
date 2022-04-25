@@ -5,7 +5,7 @@ export const getLikeHandler = async (authState, dataStoreDispatch) => {
 
     try {
         const res = await getLikeVideo(authState.token);
-        if(res.status === 201){
+        if(res.status === 200){
             dataStoreDispatch({ type : "LIKED_VIDEOS", payload : res.data.likes });
     }
         
@@ -16,6 +16,7 @@ export const getLikeHandler = async (authState, dataStoreDispatch) => {
 }
 
 export const addToLike = async (video, authState, dataStoreDispatch, navigate) => {
+    console.log(authState.token);
 
     if(authState.token){
         try {
@@ -25,7 +26,7 @@ export const addToLike = async (video, authState, dataStoreDispatch, navigate) =
             }
             
         } catch (error) {
-            alert(error);
+            alert(error);6
         }
     }
     else {
