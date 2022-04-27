@@ -16,7 +16,6 @@ export const getLikeHandler = async (authState, dataStoreDispatch) => {
 }
 
 export const addToLike = async (video, authState, dataStoreDispatch, navigate) => {
-    console.log(authState.token);
 
     if(authState.token){
         try {
@@ -26,7 +25,7 @@ export const addToLike = async (video, authState, dataStoreDispatch, navigate) =
             }
             
         } catch (error) {
-            alert(error);6
+            alert(error);
         }
     }
     else {
