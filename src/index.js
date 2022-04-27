@@ -6,6 +6,7 @@ import { makeServer } from "./server";
 import { BrowserRouter } from "react-router-dom";
 import { DataStoreProvider } from "./context/dataStore";
 import { AuthProvider } from "./context/authentication-context";
+import { PlayListProvider } from "./context/playList-context";
 
 // Call make Server
 makeServer();
@@ -15,7 +16,9 @@ ReactDOM.render(
     <BrowserRouter>
       <DataStoreProvider>
         <AuthProvider>
-          <App />
+          <PlayListProvider>
+            <App />
+          </PlayListProvider>
         </AuthProvider>  
       </DataStoreProvider>
     </BrowserRouter>
