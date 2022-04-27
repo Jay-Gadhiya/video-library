@@ -11,6 +11,7 @@ import { Settings } from "./Components/Profile/settings";
 import { LikedPage } from "./Pages/LikedVideos/liked";
 import { RequiresAuth } from "./Utility-functions/RequiresAuth";
 import { WatchLater } from "./Pages/watch-later/watchLater";
+import { HistoryPage } from "./Pages/History/History";
 
 function App() {
   return (
@@ -33,6 +34,15 @@ function App() {
           element={
             <RequiresAuth>
               <WatchLater />
+            </RequiresAuth>
+          } 
+        />
+
+
+        <Route path="/history" 
+          element={
+            <RequiresAuth>
+              <HistoryPage />
             </RequiresAuth>
           } 
         />

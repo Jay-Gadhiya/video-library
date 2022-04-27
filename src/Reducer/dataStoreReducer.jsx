@@ -14,6 +14,9 @@ export const dataStoreReducer = (state, action) => {
         case "WATCH_LATER_VIDEOS":
             return {...state, watchLater : action.payload};
 
+        case "HISTORY_VIDEOS":
+            return {...state, historyVideos : action.payload};
+
         default:
             state;
     }

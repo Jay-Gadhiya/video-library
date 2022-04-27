@@ -9,8 +9,9 @@ import { useClickOutside } from "../../Utility-functions/useClickOutside";
 import { addToWatchLater, removeFromWatchLater } from "../../Utility-functions/watchLaterHandler";
 import { useAuth } from "../../context/authentication-context";
 import { useData } from "../../context/dataStore";
+import { addToHistory } from "../../Utility-functions/historyHandler";
 
-export const VideoCard = ({video}) => {
+export const VideoCard = ({ video }) => {
     
     const imgUrl = getUrl(video._id);
     const [menu, setMenu] = useState(false);
@@ -25,7 +26,7 @@ export const VideoCard = ({video}) => {
     return (
         <div className="vid-main-container">
             <Link to={`/video/${video._id}`} >
-                <figure className="vid-img-contaier">
+                <figure onClick={ () => addToHistory(video, authState, dataStoreDispatch, navigate) } className="vid-img-contaier">
                     <img className="vid-img" src={imgUrl} alt="vidImg" />
                     <span className="vid-duration" >{video.duration}</span>
                 </figure>

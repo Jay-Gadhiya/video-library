@@ -14,7 +14,8 @@ const initialVal = {
     videos : [],
     categories : [],
     likedVideos : [],
-    watchLater : []
+    watchLater : [],
+    historyVideos : []
 }
 
 
