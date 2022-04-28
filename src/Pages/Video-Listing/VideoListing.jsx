@@ -3,15 +3,24 @@ import { Navbar } from "../../Components/Navbar/Navbar";
 import { Aside } from "../../Components/aside/aside";
 import { VideoCard } from "../../Components/videoCard/videoCard";
 import { useData } from "../../context/dataStore";
+import { usePlayList } from "../../context/playList-context";
+import { PlaylistModal } from "../../Components/playlistModal/playlistModal";
 
 
 
 export const VideoListing = () => {
 
     const { dataStoreState } = useData();
+    const {  openModal, setOpenModal } = usePlayList();
 
     return (
         <>
+            {
+                openModal
+                &&
+                <PlaylistModal />
+            }
+        
             <Navbar />
 
             <div className="aside-main-flex">
