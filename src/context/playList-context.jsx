@@ -5,7 +5,7 @@ const PlaylistContext = createContext();
 const usePlayList = () => useContext(PlaylistContext);
 
 const initialVal = {
-    playlist : []
+    playlists : []
 }
 
 

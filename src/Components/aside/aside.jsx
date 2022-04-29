@@ -22,10 +22,10 @@ export const Aside = () => {
                 <p className="vid-aside-title active">Home</p>
             </NavLink >
                 
-            <div className="aside-title-box">
+            <NavLink style={getActiveStyle} to="/playlist" className="aside-title-box">
                 <CgPlayList className="vid-aside-icon playlist-icon" />
                 <p className="vid-aside-title">Playlist</p>
-            </div>
+            </NavLink>
 
             <NavLink style={getActiveStyle} to="/like" className="aside-title-box" >
                 <AiFillLike className="vid-aside-icon" />
