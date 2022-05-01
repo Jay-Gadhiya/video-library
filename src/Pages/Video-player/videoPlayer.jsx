@@ -14,9 +14,12 @@ import axios from "axios";
 import { useAuth } from "../../context/authentication-context";
 import { addToLike, removeFromLike } from "../../Utility-functions/likeHandler";
 import { addToWatchLater, removeFromWatchLater } from "../../Utility-functions/watchLaterHandler";
+import { useState } from "react";
+import { PlaylistModal } from "../../Components/playlistModal/playlistModal";
 
 export const VideoPlayer = () => {
 
+    const [showModal, setShowModal] = useState(false);
     const { videoId } = useParams();
     const { dataStoreState, dataStoreDispatch } = useData();
     const { authState } =useAuth();
@@ -27,6 +30,12 @@ export const VideoPlayer = () => {
 
     return (
         <>
+            {
+                showModal
+                &&
+                <PlaylistModal setShowModal = {setShowModal} playlistVideo = {video}   />
+
+            }
             <Navbar />
 
             <div className="aside-main-flex">
@@ -55,7 +64,7 @@ export const VideoPlayer = () => {
                                         authState.token && isLiked
                                         ?
                                         <>
-                                            <AiFillLike onClick={() => removeFromLike(video, authState, dataStoreDispatch)} className="vid-player-icon is-active" />
+                                            <AiFillLike onClick={() => removeFromLike(authState, video._id, dataStoreDispatch, undefined, undefined)} className="vid-player-icon is-active" />
                                             <p className="option-name is-active" >Liked</p>
                                         </>
                                         :
@@ -72,18 +81,18 @@ export const VideoPlayer = () => {
                                         authState.token && isWatched
                                         ?
                                         <>
-                                            <MdOutlineWatchLater onClick={() => removeFromWatchLater(video, authState, dataStoreDispatch)} className="vid-icon-watch-Later is-active" />
+                                            <MdOutlineWatchLater onClick={() => removeFromWatchLater( authState, video._id, dataStoreDispatch, undefined, undefined)} className="vid-icon-watch-Later is-active" />
                                             <p className="option-name is-active" >Watch Later</p>
                                         </>
                                         :
                                         <>
-                                            <MdOutlineWatchLater onClick={() =>addToWatchLater(video, authState, dataStoreDispatch, navigate)} className="vid-icon-watch-Later" />
+                                            <MdOutlineWatchLater onClick={() =>addToWatchLater(authState, video, dataStoreDispatch, navigate)} className="vid-icon-watch-Later" />
                                             <p className="option-name" >Watch Later</p>
                                         </>
 
                                     }
                                 </div>
-                                <div className="vid-option">
+                                <div onClick={() => setShowModal(true)} className="vid-option">
                                     <CgPlayList className="vid-icon-save" />
                                     <p className="option-name" >Save</p>
                                 </div>

@@ -33,9 +33,9 @@ export const addToLike = async (video, authState, dataStoreDispatch, navigate) =
     }
 }
 
-export const removeFromLike = async (video, authState, dataStoreDispatch) => {
+export const removeFromLike = async (authState, videoId, dataStoreDispatch, empty1, empty2) => {
     try {
-        const res = await deleteLikeVideo(authState.token, video._id);
+        const res = await deleteLikeVideo(authState.token, videoId);
         if(res.status === 200){
             dataStoreDispatch({ type : "LIKED_VIDEOS", payload : res.data.likes });
         }

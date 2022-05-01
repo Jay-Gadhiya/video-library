@@ -2,11 +2,25 @@ import { VscChromeClose } from 'react-icons/vsc';
 import { usePlayList } from '../../context/playList-context';
 import { useState } from "react";
 import "./playlistModal.css";
+import { addToPlaylistHandler, createPlaylistHandler, deletePlaylistVideoHandler } from '../../Utility-functions/playlistHandler';
+import { useAuth } from '../../context/authentication-context';
+import { useNavigate } from 'react-router-dom';
 
-export const PlaylistModal = () => {
+export const PlaylistModal = ({ playlistVideo, setShowModal }) => {
 
-    const {  openModal, setOpenModal } = usePlayList();
+    const { playListTitle, setPlayListTitle, playlistDispatch, playlistState } = usePlayList();
     const [openForm, setOpenForm] = useState(false);
+    const { authState } = useAuth();
+    const navigate = useNavigate();
+
+    const videoOperation = (playlistId, videos) => {
+        videos?.find(item => item._id === playlistVideo._id)
+        ?
+        deletePlaylistVideoHandler(authState, playlistVideo._id, undefined, playlistId, playlistDispatch)
+        :
+        addToPlaylistHandler(authState, playlistDispatch, playlistId, playlistVideo)
+    }
+
 
     return (
         <>
@@ -14,29 +28,37 @@ export const PlaylistModal = () => {
                 <div className="modal-content">
                     <div className="modal-header">
                         <h3>Save to...</h3>
-                        <VscChromeClose onClick={() => setOpenModal(false)} className='cancle-icon' />
+                        <VscChromeClose onClick={() => setShowModal(false)} className='cancle-icon' />
                     </div>
 
                     <div className="playlist-select-container">
-                        <label className='playlist-label' htmlFor="playlist-select">
-                            <input className='playlist-checkbox' type="checkbox" name="playlist-select" />
-                            fist
-                        </label>
 
-                        <label className='playlist-label' htmlFor="playlist-select">
-                            <input className='playlist-checkbox' type="checkbox" name="playlist-select" />
-                            fist
-                        </label>
+                        {
+                            playlistState.playlists.map( playlist => (
+                                <label key={playlist._id} className='playlist-label' htmlFor="playlist-select">
+                                    <input
+                                    onClick={ () => videoOperation(playlist._id, playlist.videos) }
+                                    checked={ playlist.videos.find(item => item._id === playlistVideo._id) ? true : false }
+                                    className='playlist-checkbox' 
+                                    type="checkbox" 
+                                    name="playlist-select"
+                                    id={playlist._id}
+                                     />
+                                    {playlist.title.title}
+                                </label>
+                            ) )
+                        } 
+
                         
                     </div>
                     
                     {
                         openForm
                         ?
-                        <form className="add-playlist-form">
-                            <input className='create-plalist-input w100 b-radius' placeholder='Playlist Name' type="search" name="playlist" required/>
-                            <button class="btn btn-primary w100 b-radius">Create</button>
-                        </form>
+                        <div className="add-playlist-form">
+                            <input onChange={(e) => setPlayListTitle((pre) => ({...pre, title:e.target.value}))} className='create-plalist-input w100 b-radius' placeholder='Playlist Name' type="search" name="playlist" required/>
+                            <button onClick = {() => createPlaylistHandler(playListTitle, authState, playlistDispatch, navigate)} className="btn btn-primary w100 b-radius">Create</button>
+                        </div>
                         :
                         <div className="create-playlist-btn">
                             <button onClick={() => setOpenForm(true)} className="create-btn"><span>+</span> Create Playlist </button>
@@ -48,3 +70,4 @@ export const PlaylistModal = () => {
         </>
     )
 }
+

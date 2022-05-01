@@ -1,18 +1,17 @@
 import "../../Pages/Video-Listing/VideoListing.css";
 import { Aside } from "../../Components/aside/aside";
 import { Navbar } from "../../Components/Navbar/Navbar";
-import { useData } from "../../context/dataStore";
 import { PlaylistCard } from "../../Components/playlistCard/playlistCard";
+import { usePlayList } from "../../context/playList-context";
 
 
 
 export const PlaylistPage = () => {
 
-    const { dataStoreState } = useData();
+    const { playlistState } = usePlayList();
 
     return (
         <>
-        
             <Navbar />
 
             <div className="aside-main-flex">
@@ -20,13 +19,11 @@ export const PlaylistPage = () => {
 
                 <div className="filter-and-main-flex">
                     <main className="vid-listing-container" >
-                        <PlaylistCard />
-                        <PlaylistCard />
-                        <PlaylistCard />
-                        <PlaylistCard />
-                        <PlaylistCard />
-                        <PlaylistCard />
-                        <PlaylistCard />
+                       {
+                           playlistState.playlists.map( playlist => (
+                               <PlaylistCard key={playlist._id} playlist = {playlist} />
+                           ) )
+                       }
                     </main> 
                 </div>
           

@@ -45,3 +45,31 @@
     font-weight: 700;
     cursor: pointer;
 }
+
+.playlist-card-menu-wrapper {
+    position: relative;
+}
+
+.delete-playlist-wrapper {
+    position: absolute;
+    top: 1rem;
+    left: -8.5rem;
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    align-items: center;
+    padding: 7px;
+    width: max-content;
+    border-radius: 4px;
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    cursor: pointer;
+}
+
+.delete-playlist-wrapper:hover {
+    color: var(--danger-color);
+}
+
+.playlist-card-icon {
+    font-size: 1.1rem;
+}

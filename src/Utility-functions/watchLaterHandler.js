@@ -14,7 +14,7 @@ export const getWatchLaterHandler = async (authState, dataStoreDispatch) => {
 }
 
 
-export const addToWatchLater = async (video, authState, dataStoreDispatch, navigate) => {
+export const addToWatchLater = async (authState, video, dataStoreDispatch, navigate) => {
 
     if(authState.token){
         try {
@@ -32,14 +32,14 @@ export const addToWatchLater = async (video, authState, dataStoreDispatch, navig
     }
 }
 
-export const removeFromWatchLater = async (video, authState, dataStoreDispatch) => {
+export const removeFromWatchLater = async ( authState, videoId, dataStoreDispatch, empty1, empty2) => {
     try {
-        const res = await deleteWatchLaterVideos(authState.token, video._id);
+        const res = await deleteWatchLaterVideos(authState.token, videoId);
         if(res.status === 200){
             dataStoreDispatch({ type : "WATCH_LATER_VIDEOS", payload : res.data.watchlater });
         }
         
     } catch (error) {
-        alert(error);
+        console.log(error);
     }
 }

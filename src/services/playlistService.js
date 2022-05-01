@@ -6,7 +6,7 @@ export const getAllPlaylist = (token) => {
     });
 };
 
-export const createNewPlaylist = (token, playListTitle) => {
+export const postNewPlaylist = (token, playListTitle) => {
     return axios.post(
       "/api/user/playlists",
       { playlist: { title: playListTitle } },
@@ -18,8 +18,8 @@ export const createNewPlaylist = (token, playListTitle) => {
 };
   
 
-export const deletePlaylist = (token, videoId) => {
-    return axios.delete(`/api/user/playlists/${videoId}`, {
+export const deletePlaylist = (token, playListId) => {
+    return axios.delete(`/api/user/playlists/${playListId}`, {
         headers: { authorization: token },
     });
 };
@@ -32,7 +32,7 @@ export const getPlaylistVideos = (token, playListId) => {
 };
 
 
-export const addVideoToPlaylist = (token, playListId, playListVideo) => {
+export const postVideoPlaylist = (token, playListId, playListVideo) => {
     return axios.post(`/api/user/playlists/${playListId}`,
       { video : playListVideo },
 
@@ -43,7 +43,7 @@ export const addVideoToPlaylist = (token, playListId, playListVideo) => {
 };
 
 
-export const deleteVideoFromPlaylist = (token, playListId, videoId) => {
+export const deleteVideoPlaylist = (token, playListId, videoId) => {
     return axios.delete(`/api/user/playlists/${playListId}/${videoId}`,
       {
         headers: { authorization: token },

@@ -10,7 +10,7 @@ import { addToWatchLater, removeFromWatchLater } from "../../Utility-functions/w
 import { useAuth } from "../../context/authentication-context";
 import { useData } from "../../context/dataStore";
 import { addToHistory } from "../../Utility-functions/historyHandler";
-import { usePlayList } from "../../context/playList-context";
+import { PlaylistModal } from "../playlistModal/playlistModal";
 
 export const VideoCard = ({ video }) => {
     
@@ -18,14 +18,22 @@ export const VideoCard = ({ video }) => {
     const [menu, setMenu] = useState(false);
     const { authState } = useAuth();
     const { dataStoreState, dataStoreDispatch } = useData();
-    const { setOpenModal } = usePlayList();
+    const [showModal, setShowModal] = useState(false);
     const navigate = useNavigate();
 
     const isWatched = dataStoreState.watchLater.find(item => item._id === video._id);
 
     const menuBoxRef = useClickOutside(() => setMenu(false));
     
-    return (        
+    return (    
+        <>   
+
+        {
+            showModal
+            &&
+            <PlaylistModal setShowModal = {setShowModal} playlistVideo = {video} />
+        }
+
         <div className="vid-main-container">
             <Link to={`/video/${video._id}`} >
                 <figure onClick={ () => addToHistory(video, authState, dataStoreDispatch, navigate) } className="vid-img-contaier">
@@ -56,19 +64,19 @@ export const VideoCard = ({ video }) => {
                                     ?
                                     <>
                                         <MdOutlineWatchLater className="option-menu-icon-WL watched" />
-                                        <p  onClick={() => removeFromWatchLater(video, authState, dataStoreDispatch)} className="option-menu-title watched">Remove from Watch Later</p>
+                                        <p  onClick={() => removeFromWatchLater(authState, video._id,  dataStoreDispatch, undefined, undefined)} className="option-menu-title watched">Remove from Watch Later</p>
                                     </>
                                     :
                                     <>
                                         <MdOutlineWatchLater  className="option-menu-icon-WL" />
-                                        <p onClick={() => addToWatchLater(video, authState, dataStoreDispatch, navigate)} className="option-menu-title">Save to Watch Later</p>
+                                        <p onClick={() => addToWatchLater(authState, video, dataStoreDispatch, navigate)} className="option-menu-title">Save to Watch Later</p>
                                     </>
                                 }
                                
                             </div>
                             <div className="option-box">
                                 <CgPlayList className="option-menu-icon" />
-                                <p onClick={() => setOpenModal(true)} className="option-menu-title">Save to PlayList</p>
+                                <p onClick={() => setShowModal(true)} className="option-menu-title">Save to PlayList</p>
                             </div>
                         </div>
                     }
@@ -76,5 +84,6 @@ export const VideoCard = ({ video }) => {
                 </div>
             </div>
         </div>
+        </> 
     )
 }
