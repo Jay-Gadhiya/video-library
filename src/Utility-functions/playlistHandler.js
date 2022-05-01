@@ -71,7 +71,7 @@ export const addToPlaylistHandler = async ( authState, playlistDispatch, playLis
             }
             
         } catch (error) {
-            console.log(error);
+            alert(error);
         }
 }
 
@@ -83,6 +83,6 @@ export const deletePlaylistVideoHandler = async (authState, videoId, undefined, 
         }
         
     } catch (error) {
-        console.log(error);
+        alert(error);
     }
 }

@@ -40,6 +40,6 @@ export const removeFromWatchLater = async ( authState, videoId, dataStoreDispatc
         }
         
     } catch (error) {
-        console.log(error);
+        alert(error);
     }
 }

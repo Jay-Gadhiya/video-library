@@ -53,6 +53,6 @@ export const clearTheHistory = async (authState, dataStoreDispatch) => {
         }
         
     } catch (error) {
-        console.log(error);
+        alert(error);
     }
 }
