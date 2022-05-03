@@ -1,11 +1,11 @@
 import "../LikedVideos/liked.css";
 import { Aside } from "../../Components/aside/aside";
 import { Navbar } from "../../Components/Navbar/Navbar";
-import histroryImg   from "../../assets/history-img.svg";
 import { HorizontalCard } from "../../Components/horizontalCard/horizontalCard";
 import { useData } from "../../context/dataStore";
 import { clearTheHistory, removeFromHistory } from "../../Utility-functions/historyHandler";
 import { useAuth } from "../../context/authentication-context";
+import pageSideImg from "../../assets/page-side-img.svg";
 
 export const HistoryPage = () => {
 
@@ -22,7 +22,7 @@ export const HistoryPage = () => {
 
                 <div className="horizontal-main-container">
                     <div className="like-img-and-info">
-                        <img className="horizontal-hero-img" src={histroryImg} alt="like" />
+                        <img className="horizontal-hero-img" src={pageSideImg} alt="like" />
                         <p className="liked-vid-heading">History videos</p>
                         <p className="liked-vid-count" >{videosCount} Videos</p>
                         <button onClick={() => clearTheHistory(authState, dataStoreDispatch)} className="btn btn-primary-outline btn-clear-history">Clear History</button>

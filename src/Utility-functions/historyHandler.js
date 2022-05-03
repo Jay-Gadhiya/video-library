@@ -32,12 +32,12 @@ export const addToHistory = async (video, authState, dataStoreDispatch, navigate
     }
 }
 
-export const removeFromHistory = async (video, authState, dataStoreDispatch) => {
+export const removeFromHistory = async ( authState, videoId, dataStoreDispatch, empty1, empty2) => {
     try {
-        const res = await deleteHistoryVideos(authState.token, video._id);
+        const res = await deleteHistoryVideos(authState.token, videoId);
         if(res.status === 200){
             dataStoreDispatch({ type : "HISTORY_VIDEOS", payload : res.data.history });
-        }
+        }   
         
     } catch (error) {
         alert(error);
@@ -53,6 +53,6 @@ export const clearTheHistory = async (authState, dataStoreDispatch) => {
         }
         
     } catch (error) {
-        console.log(error);
+        alert(error);
     }
 }

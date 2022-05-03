@@ -12,6 +12,8 @@ import { LikedPage } from "./Pages/LikedVideos/liked";
 import { RequiresAuth } from "./Utility-functions/RequiresAuth";
 import { WatchLater } from "./Pages/watch-later/watchLater";
 import { HistoryPage } from "./Pages/History/History";
+import { PlaylistPage } from "./Pages/Playlist/playlist";
+import { PlaylistVideos } from "./Pages/playlistVideos/playlistVideos";
 
 function App() {
   return (
@@ -19,6 +21,7 @@ function App() {
       <Routes>
         <Route path="/" element={<VideoListing />} />
         <Route path="/video/:videoId" element={<VideoPlayer />} />
+        <Route path="/playlist/:playlistId" element={<PlaylistVideos />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
       
@@ -43,6 +46,14 @@ function App() {
           element={
             <RequiresAuth>
               <HistoryPage />
+            </RequiresAuth>
+          } 
+        />
+
+        <Route path="/playlist" 
+          element={
+            <RequiresAuth>
+              <PlaylistPage />
             </RequiresAuth>
           } 
         />

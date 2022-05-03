@@ -5,13 +5,13 @@ import { VideoCard } from "../../Components/videoCard/videoCard";
 import { useData } from "../../context/dataStore";
 
 
-
 export const VideoListing = () => {
 
     const { dataStoreState } = useData();
 
     return (
         <>
+        
             <Navbar />
 
             <div className="aside-main-flex">
