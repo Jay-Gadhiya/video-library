@@ -13,12 +13,12 @@ export const categories = [
   },
   {
     _id: uuid(),
-    categoryName: "Gadgets",
+    categoryName: "smartphone",
    
   },
   {
     _id: uuid(),
-    categoryName: "Laptops",
+    categoryName: "Laptop",
    
   },
   {

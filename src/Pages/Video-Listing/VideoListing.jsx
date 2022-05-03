@@ -3,41 +3,46 @@ import { Navbar } from "../../Components/Navbar/Navbar";
 import { Aside } from "../../Components/aside/aside";
 import { VideoCard } from "../../Components/videoCard/videoCard";
 import { useData } from "../../context/dataStore";
-
+import { useFilter } from "../../context/filter-context";
+import { applyFilter } from "../../Utility-functions/applyFIlter";
 
 export const VideoListing = () => {
+  const { dataStoreState } = useData();
+  const { filterState, filterDispatch } = useFilter();
 
-    const { dataStoreState } = useData();
+  const filteredDataByCategory =  filterState.category === "All" ? dataStoreState.videos : dataStoreState.videos.filter(item => item.category === filterState.category.toLowerCase())
 
-    return (
-        <>
-        
-            <Navbar />
 
-            <div className="aside-main-flex">
-                <Aside />
+  return (
+    <>
+      <Navbar />
 
-                <div className="filter-and-main-flex">
-                    <div className="filter-box">
-                        {
-                            dataStoreState.categories.map(category => (
-                                <div key={category._id} className="filter-chip">
-                                    { category.categoryName }
-                                </div>
-                            ))
-                        }
-                        
-                    </div>
-                    <main className="vid-listing-container" >
-                        {
-                            dataStoreState.videos.map( video => <VideoCard key={video._id} video={video} /> )
-                        }
-                        
-                    </main> 
-                </div>
-          
-            </div>
-            
-        </>
-    )
-}
+      <div className="aside-main-flex">
+        <Aside />
+
+        <div className="filter-and-main-flex">
+
+          <div className="filter-box">
+
+            {dataStoreState.categories.map((category) => (
+              <div onClick={() => applyFilter(category.categoryName, filterDispatch)} key={category._id} 
+              className={`filter-chip ${filterState.category === category.categoryName && "chip-color"}`}>
+                {category.categoryName}
+              </div>
+            ))}
+
+          </div>
+
+          <main className="vid-listing-container">
+
+            {filteredDataByCategory.map((video) => (
+              <VideoCard key={video._id} video={video} />
+            ))}
+
+          </main>
+
+        </div>
+      </div>
+    </>
+  );
+};

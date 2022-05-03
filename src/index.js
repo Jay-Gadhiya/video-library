@@ -7,6 +7,7 @@ import { BrowserRouter } from "react-router-dom";
 import { DataStoreProvider } from "./context/dataStore";
 import { AuthProvider } from "./context/authentication-context";
 import { PlayListProvider } from "./context/playList-context";
+import { FilterProvider } from "./context/filter-context";
 
 // Call make Server
 makeServer();
@@ -17,7 +18,9 @@ ReactDOM.render(
       <DataStoreProvider>
         <AuthProvider>
           <PlayListProvider>
-            <App />
+            <FilterProvider>
+              <App />
+            </FilterProvider>
           </PlayListProvider>
         </AuthProvider>  
       </DataStoreProvider>
