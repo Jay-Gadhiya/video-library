@@ -1,4 +1,4 @@
-import { createContext, useContext, useReducer } from "react";
+import { createContext, useContext, useReducer, useState } from "react";
 import { filterReducer } from "../Reducer/filterReducer";
 
 const FilterContext = createContext();
@@ -9,9 +9,10 @@ const initialVal = { category : "All" };
 const FilterProvider = ({ children }) => {
 
     const [filterState, filterDispatch] = useReducer(filterReducer, initialVal);
+    const [searchedVideo, setSearchedVideo] = useState("");
 
     return (
-        <FilterContext.Provider value={{ filterState, filterDispatch }}>
+        <FilterContext.Provider value={{ filterState, filterDispatch, searchedVideo, setSearchedVideo }}>
             { children }
         </FilterContext.Provider>
     )

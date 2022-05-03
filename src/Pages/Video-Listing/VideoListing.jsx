@@ -8,10 +8,21 @@ import { applyFilter } from "../../Utility-functions/applyFIlter";
 
 export const VideoListing = () => {
   const { dataStoreState } = useData();
-  const { filterState, filterDispatch } = useFilter();
+  const { filterState, filterDispatch, searchedVideo } = useFilter();
 
-  const filteredDataByCategory =  filterState.category === "All" ? dataStoreState.videos : dataStoreState.videos.filter(item => item.category === filterState.category.toLowerCase())
+  const filteredDataByCategory =
+    filterState.category === "All"
+      ? dataStoreState.videos
+      : dataStoreState.videos.filter(
+          (item) => item.category === filterState.category.toLowerCase()
+        );
 
+  const filteredBySearchedData = filteredDataByCategory.filter((item) =>
+    item.title.toLowerCase().includes(searchedVideo.toLowerCase().trim())
+    ||
+    item.channel.toLowerCase().includes(searchedVideo.toLowerCase().trim())
+      
+  );
 
   return (
     <>
@@ -21,26 +32,27 @@ export const VideoListing = () => {
         <Aside />
 
         <div className="filter-and-main-flex">
-
           <div className="filter-box">
-
             {dataStoreState.categories.map((category) => (
-              <div onClick={() => applyFilter(category.categoryName, filterDispatch)} key={category._id} 
-              className={`filter-chip ${filterState.category === category.categoryName && "chip-color"}`}>
+              <div
+                onClick={() =>
+                  applyFilter(category.categoryName, filterDispatch)
+                }
+                key={category._id}
+                className={`filter-chip ${
+                  filterState.category === category.categoryName && "chip-color"
+                }`}
+              >
                 {category.categoryName}
               </div>
             ))}
-
           </div>
 
           <main className="vid-listing-container">
-
-            {filteredDataByCategory.map((video) => (
+            {filteredBySearchedData.map((video) => (
               <VideoCard key={video._id} video={video} />
             ))}
-
           </main>
-
         </div>
       </div>
     </>
