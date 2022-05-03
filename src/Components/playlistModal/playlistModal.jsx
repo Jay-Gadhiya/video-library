@@ -21,7 +21,8 @@ export const PlaylistModal = ({ playlistVideo, setShowModal }) => {
         addToPlaylistHandler(authState, playlistDispatch, playlistId, playlistVideo)
     }
 
-    const createPlaylist = () => {
+    const createPlaylist = (e) => {
+        e.preventDefault();
         createPlaylistHandler(playListTitle, authState, playlistDispatch, navigate);
         setPlayListTitle({title : ""});
     }
@@ -60,10 +61,10 @@ export const PlaylistModal = ({ playlistVideo, setShowModal }) => {
                     {
                         openForm
                         ?
-                        <div className="add-playlist-form">
+                        <form onSubmit={(e) => createPlaylist(e)}  className="add-playlist-form">
                             <input onChange={(e) => setPlayListTitle((pre) => ({...pre, title:e.target.value}))} value={playListTitle.title} className='create-plalist-input w100 b-radius' placeholder='Playlist Name' type="search" name="playlist" required/>
-                            <button onClick = { createPlaylist } className="btn btn-primary w100 b-radius">Create</button>
-                        </div>
+                            <button className="btn btn-primary w100 b-radius">Create</button>
+                        </form>
                         :
                         <div className="create-playlist-btn">
                             <button onClick={() => setOpenForm(true)} className="create-btn"><span>+</span> Create Playlist </button>
