@@ -55,8 +55,8 @@ body {
 
 
 .chip-color {
-    background-color: var(--active-color);
-    color: var(--default-black);
+    background-color: var(--primary-color);
+    color: var(--white-default);
 }
 
 .filter-chip:hover {
