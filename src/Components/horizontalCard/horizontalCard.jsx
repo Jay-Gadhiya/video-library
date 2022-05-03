@@ -6,7 +6,7 @@ import { useData } from "../../context/dataStore";
 import { Link } from "react-router-dom";
 import { usePlayList } from "../../context/playList-context";
 
-export const HorizontalCard = ({ videos, deleteHandler, playlistId }) => {
+export const HorizontalCard = ({ videos, deleteHandler, playlistId, toastProp }) => {
 
     const likedImg = getUrl(videos._id);
     const { authState } = useAuth();
@@ -26,7 +26,7 @@ export const HorizontalCard = ({ videos, deleteHandler, playlistId }) => {
                     <p className="horizontal-card-channel">{ videos.channel }</p>
                 </div>
 
-            <FaTrashAlt onClick={() => deleteHandler( authState, videos._id, dataStoreDispatch, playlistId, playlistDispatch)} className="trash-icon" />
+            <FaTrashAlt onClick={() => deleteHandler( authState, videos._id, dataStoreDispatch, playlistId, playlistDispatch, toastProp)} className="trash-icon" />
         </div>
     )
 }

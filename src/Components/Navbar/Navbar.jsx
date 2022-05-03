@@ -19,7 +19,7 @@ export const Navbar = () => {
 
     return (
         <nav className="vid-nav-container" >
-            <p className="vid-brand-name">SkyNET</p>
+            <p className="vid-brand-name">SkyNET<span></span></p>
             <div className="vid-search-container">
                 <AiOutlineSearch className="search-icon" />
                 <input onChange={(e) => searchHandler(e)} 

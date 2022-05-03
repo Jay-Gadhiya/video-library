@@ -5,10 +5,12 @@ import { usePlayList } from "../../context/playList-context";
 import { useParams } from "react-router-dom";
 import { deletePlaylistVideoHandler } from "../../Utility-functions/playlistHandler";
 import playlistVideosImg from "../../assets/page-side-img.svg";
+import { useData } from "../../context/dataStore";
 
 
 export const PlaylistVideos = () => {
   const { playlistState } = usePlayList();
+  const { toastProp } = useData();
   const { playlistId } = useParams();
   const playlist = playlistState.playlists.reduce( (accu, item) => (item._id === playlistId ? item : accu),
     { title: {title : ""}, videos: [], _id: "" }
@@ -40,6 +42,7 @@ export const PlaylistVideos = () => {
                         videos = {video}
                         deleteHandler = {deletePlaylistVideoHandler}
                         playlistId = { playlistId } 
+                        toastProp = {toastProp}
                     />
                 ) )
             }

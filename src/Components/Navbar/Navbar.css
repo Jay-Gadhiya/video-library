@@ -17,6 +17,10 @@
     font-weight: 600;
 }
 
+.vid-brand-name span {
+    color: var(--primary-color);
+}
+
 .vid-search-container {
     border-radius: 6px;
     display: flex;

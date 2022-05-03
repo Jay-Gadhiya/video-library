@@ -1,4 +1,5 @@
 import { deleteHistoryVideos, getHistoryVideos, postHistoryVideos, deleteAllHistoryVideos } from "../services/historyService";
+import toast from 'react-hot-toast';
 
 export const getHistoryHandler = async (authState, dataStoreDispatch) => {
 
@@ -24,7 +25,7 @@ export const addToHistory = async (video, authState, dataStoreDispatch, navigate
             }
             
         } catch (error) {
-            return error;
+            toast.error('Something went wrong',toastProp);
         }
     }
     else {
@@ -40,19 +41,20 @@ export const removeFromHistory = async ( authState, videoId, dataStoreDispatch, 
         }   
         
     } catch (error) {
-        alert(error);
+        toast.error('Something went wrong',toastProp);
     }
 }
 
 
-export const clearTheHistory = async (authState, dataStoreDispatch) => {
+export const clearTheHistory = async (authState, dataStoreDispatch, toastProp) => {
     try {
         const res = await deleteAllHistoryVideos(authState.token);
         if(res.status === 200){
             dataStoreDispatch({ type : "HISTORY_VIDEOS", payload : res.data.history });
+            toast.success('History Clear',toastProp);
         }
         
     } catch (error) {
-        alert(error);
+        toast.error('Something went wrong',toastProp);
     }
 }

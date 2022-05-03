@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router";
 import axios from "axios";
 import { useAuth } from "../../context/authentication-context";
+import toast from 'react-hot-toast';
+import { useData } from "../../context/dataStore";
 
 
 const Signup = () => {
@@ -11,6 +13,7 @@ const Signup = () => {
     const [userData, setUserData] = useState({  firstName : "", lastName : "", email : "", password : "" });
     const navigate = useNavigate();
     const { authDispatch, authState } = useAuth();
+    const { toastProp } = useData();
     
 
     // user inputs
@@ -34,11 +37,12 @@ const Signup = () => {
             localStorage.setItem("token", response.data.encodedToken);
             localStorage.setItem("user", JSON.stringify(response.data.createdUser));
             authDispatch({ type : "USER_SIGNUP", payload : response.data.encodedToken });
+            toast.success('Signup Successfully',toastProp);
             navigate("/");
           }
          
         } catch (error) {
-            alert(error);
+            toast.error('Something went wrong',toastProp);
         }
     };
     

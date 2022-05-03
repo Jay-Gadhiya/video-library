@@ -5,20 +5,22 @@ import "./playlistModal.css";
 import { addToPlaylistHandler, createPlaylistHandler, deletePlaylistVideoHandler } from '../../Utility-functions/playlistHandler';
 import { useAuth } from '../../context/authentication-context';
 import { useNavigate } from 'react-router-dom';
+import { useData } from '../../context/dataStore';
 
 export const PlaylistModal = ({ playlistVideo, setShowModal }) => {
 
     const { playListTitle, setPlayListTitle, playlistDispatch, playlistState } = usePlayList();
     const [openForm, setOpenForm] = useState(false);
     const { authState } = useAuth();
+    const { toastProp } = useData();
     const navigate = useNavigate();
 
     const videoOperation = (playlistId, videos) => {
         videos?.find(item => item._id === playlistVideo._id)
         ?
-        deletePlaylistVideoHandler(authState, playlistVideo._id, undefined, playlistId, playlistDispatch)
+        deletePlaylistVideoHandler(authState, playlistVideo._id, undefined, playlistId, playlistDispatch, toastProp)
         :
-        addToPlaylistHandler(authState, playlistDispatch, playlistId, playlistVideo)
+        addToPlaylistHandler(authState, playlistDispatch, playlistId, playlistVideo, toastProp)
     }
 
     const createPlaylist = (e) => {

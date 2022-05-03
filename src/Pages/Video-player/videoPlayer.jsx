@@ -21,12 +21,13 @@ export const VideoPlayer = () => {
 
     const [showModal, setShowModal] = useState(false);
     const { videoId } = useParams();
-    const { dataStoreState, dataStoreDispatch } = useData();
+    const { dataStoreState, dataStoreDispatch, toastProp } = useData();
     const { authState } =useAuth();
     const navigate = useNavigate();
     const video = dataStoreState.videos.length !== 0 && dataStoreState.videos.find( video => videoId === video._id );
     const isLiked = dataStoreState.likedVideos.find(item => item._id === video._id);
     const isWatched = dataStoreState.watchLater.find(item => item._id === video._id);
+
 
     return (
         <>
@@ -64,12 +65,12 @@ export const VideoPlayer = () => {
                                         authState.token && isLiked
                                         ?
                                         <>
-                                            <AiFillLike onClick={() => removeFromLike(authState, video._id, dataStoreDispatch, undefined, undefined)} className="vid-player-icon is-active" />
+                                            <AiFillLike onClick={() => removeFromLike(authState, video._id, dataStoreDispatch, undefined, undefined, toastProp)} className="vid-player-icon is-active" />
                                             <p className="option-name is-active" >Liked</p>
                                         </>
                                         :
                                         <>
-                                            <AiFillLike onClick={() =>addToLike(video, authState, dataStoreDispatch, navigate)} className="vid-player-icon" />
+                                            <AiFillLike onClick={() =>addToLike(video, authState, dataStoreDispatch, navigate, toastProp)} className="vid-player-icon" />
                                             <p className="option-name" >Like</p>
                                         </>
 
@@ -81,12 +82,12 @@ export const VideoPlayer = () => {
                                         authState.token && isWatched
                                         ?
                                         <>
-                                            <MdOutlineWatchLater onClick={() => removeFromWatchLater( authState, video._id, dataStoreDispatch, undefined, undefined)} className="vid-icon-watch-Later is-active" />
+                                            <MdOutlineWatchLater onClick={() => removeFromWatchLater( authState, video._id, dataStoreDispatch, undefined, undefined, toastProp)} className="vid-icon-watch-Later is-active" />
                                             <p className="option-name is-active" >Watch Later</p>
                                         </>
                                         :
                                         <>
-                                            <MdOutlineWatchLater onClick={() =>addToWatchLater(authState, video, dataStoreDispatch, navigate)} className="vid-icon-watch-Later" />
+                                            <MdOutlineWatchLater onClick={() =>addToWatchLater(authState, video, dataStoreDispatch, navigate, toastProp)} className="vid-icon-watch-Later" />
                                             <p className="option-name" >Watch Later</p>
                                         </>
 
