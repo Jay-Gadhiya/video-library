@@ -1,4 +1,5 @@
 import { getAllPlaylist, postNewPlaylist, deletePlaylist, getPlaylistVideos, postVideoPlaylist, deleteVideoPlaylist } from "../services/playlistService";
+import toast from 'react-hot-toast';
 
 export const getPlaylistHandler = async (authState, playlistDispatch) => {
 
@@ -34,15 +35,16 @@ export const createPlaylistHandler = async (playListTitle, authState, playlistDi
 }
 
 
-export const deletePlaylistHandler = async (playlistId, authState, playlistDispatch) => {
+export const deletePlaylistHandler = async (playlistId, authState, playlistDispatch, toastProp) => {
     try {
         const res = await deletePlaylist(authState.token, playlistId);
         if(res.status === 200){
             playlistDispatch({ type : "PLAYLISTS", payload : res.data.playlists });
+            toast.success('Playlist Deleted',toastProp);
         }
         
     } catch (error) {
-        alert(error);
+        toast.error('Something went wrong',toastProp);
     }
 }
 
@@ -61,28 +63,30 @@ export const getPlaylistVideosHandler = async (authState, playlistDispatch, play
 }
 
 
-export const addToPlaylistHandler = async ( authState, playlistDispatch, playListId, playListVideo ) => {
+export const addToPlaylistHandler = async ( authState, playlistDispatch, playListId, playListVideo, toastProp ) => {
 
         try {
             const res = await postVideoPlaylist(authState.token, playListId, playListVideo);
             console.log(res);
             if(res.status === 201){
                 playlistDispatch({ type : "PLAYLISTS_VIDEO_UPDATE", payload : res.data.playlist });
+                toast.success('Video Added Scuccessfully',toastProp);
             }
             
         } catch (error) {
-            alert(error);
+            toast.error('Something went wrong',toastProp);
         }
 }
 
-export const deletePlaylistVideoHandler = async (authState, videoId, undefined, playlistId, playlistDispatch) => {
+export const deletePlaylistVideoHandler = async (authState, videoId, undefined, playlistId, playlistDispatch, toastProp) => {
     try {
         const res = await deleteVideoPlaylist(authState.token, playlistId, videoId);
         if(res.status === 200){
             playlistDispatch({ type : "PLAYLISTS_VIDEO_UPDATE", payload : res.data.playlist });
+            toast.success('Video Removed',toastProp);
         }
         
     } catch (error) {
-        alert(error);
+        toast.error('Something went wrong',toastProp);
     }
 }

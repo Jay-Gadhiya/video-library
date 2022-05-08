@@ -12,12 +12,13 @@ import { useData } from "../../context/dataStore";
 import { addToHistory } from "../../Utility-functions/historyHandler";
 import { PlaylistModal } from "../playlistModal/playlistModal";
 
+
 export const VideoCard = ({ video }) => {
     
     const imgUrl = getUrl(video._id);
     const [menu, setMenu] = useState(false);
     const { authState } = useAuth();
-    const { dataStoreState, dataStoreDispatch } = useData();
+    const { dataStoreState, dataStoreDispatch, toastProp } = useData();
     const [showModal, setShowModal] = useState(false);
     const navigate = useNavigate();
 
@@ -64,12 +65,12 @@ export const VideoCard = ({ video }) => {
                                     ?
                                     <>
                                         <MdOutlineWatchLater className="option-menu-icon-WL watched" />
-                                        <p  onClick={() => removeFromWatchLater(authState, video._id,  dataStoreDispatch, undefined, undefined)} className="option-menu-title watched">Remove from Watch Later</p>
+                                        <p  onClick={() => removeFromWatchLater(authState, video._id,  dataStoreDispatch, undefined, undefined, toastProp)} className="option-menu-title watched">Remove from Watch Later</p>
                                     </>
                                     :
                                     <>
                                         <MdOutlineWatchLater  className="option-menu-icon-WL" />
-                                        <p onClick={() => addToWatchLater(authState, video, dataStoreDispatch, navigate)} className="option-menu-title">Save to Watch Later</p>
+                                        <p onClick={() => addToWatchLater(authState, video, dataStoreDispatch, navigate, toastProp)} className="option-menu-title">Save to Watch Later</p>
                                     </>
                                 }
                                

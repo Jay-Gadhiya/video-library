@@ -8,6 +8,7 @@ import { deletePlaylistHandler } from "../../Utility-functions/playlistHandler";
 import { useAuth } from "../../context/authentication-context";
 import { usePlayList } from "../../context/playList-context";
 import { Link } from "react-router-dom";
+import { useData } from "../../context/dataStore";
 
 
 export const PlaylistCard = ({ playlist }) => {
@@ -15,6 +16,7 @@ export const PlaylistCard = ({ playlist }) => {
     const [openMenu, setOpenMenu] = useState(false);
     const { authState } = useAuth();
     const { playlistDispatch } = usePlayList();
+    const { toastProp } = useData();
     
     return (
         <div className="main-card-wrapper">
@@ -34,7 +36,7 @@ export const PlaylistCard = ({ playlist }) => {
                     {
                         openMenu
                         &&
-                        <div onClick={() => deletePlaylistHandler(playlist._id, authState, playlistDispatch)} className="delete-playlist-wrapper">
+                        <div onClick={() => deletePlaylistHandler(playlist._id, authState, playlistDispatch, toastProp)} className="delete-playlist-wrapper">
                             <MdDelete className="playlist-card-icon" />
                             <p>Delete Playlist</p>  
                         </div>

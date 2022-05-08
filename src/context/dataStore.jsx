@@ -6,6 +6,7 @@ import {
     useEffect,
   } from "react";
 import { dataStoreReducer } from "../Reducer/dataStoreReducer";
+import toast from 'react-hot-toast';
 
 
 const DataStoreContext = createContext();
@@ -16,6 +17,16 @@ const initialVal = {
     likedVideos : [],
     watchLater : [],
     historyVideos : []
+}
+
+const toastProp = {
+  duration: 2000,
+  style: {
+  fontSize: "1.2rem",
+  borderRadius: '10px',
+  background: '#168baf',
+  color : '#fff'
+  },
 }
 
 
@@ -30,6 +41,7 @@ const DataStoreProvider = ({children}) => {
               const res = await axios.get("/api/videos");
               if(res.status === 200) {
                 dataStoreDispatch({type : "INITIAL_DATA", payload : res.data.videos});
+                toast.success('Welcome to SkyNET',toastProp);
               }
             } catch (error) {
                alert(error);
@@ -49,7 +61,7 @@ const DataStoreProvider = ({children}) => {
 
 
     return (
-        <DataStoreContext.Provider value={{ dataStoreState, dataStoreDispatch }}>
+        <DataStoreContext.Provider value={{ dataStoreState, dataStoreDispatch, toastProp }}>
             {children}
         </DataStoreContext.Provider>
     )

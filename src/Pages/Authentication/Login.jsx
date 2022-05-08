@@ -4,6 +4,8 @@ import { useState } from "react";
 import axios from "axios";
 import { useNavigate, useLocation } from "react-router";
 import { useAuth } from "../../context/authentication-context";
+import { useData } from "../../context/dataStore";
+import toast from 'react-hot-toast';
 
 
 const Login = () => {
@@ -12,6 +14,7 @@ const Login = () => {
     const [userData, setUserData] = useState({email : "", password : ""});
     const { authDispatch } = useAuth();
     const location = useLocation();
+    const { toastProp } = useData();
     let from = location.state?.from?.pathname || '/';
 
     // Dummy data for guest credential
@@ -42,12 +45,14 @@ const Login = () => {
                 localStorage.setItem("user", JSON.stringify(response.data.foundUser));
                 authDispatch({ type : "USER_LOGIN", payload : response.data.encodedToken })
                 navigate(from, { replace: true });
+                toast.success('Login Successfully',toastProp);
+                
             }
 
             
 
         } catch (error) {
-            alert("Please Enter valid username or password");
+            toast.error('Something went wrong',toastProp);
         }
 
     }

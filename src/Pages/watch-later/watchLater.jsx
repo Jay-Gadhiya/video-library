@@ -9,7 +9,7 @@ import pageSideImg from "../../assets/page-side-img.svg";6
 
 export const WatchLater = () => {
 
-    const  { dataStoreState } = useData();
+    const  { dataStoreState, toastProp } = useData();
     const videosCount = dataStoreState.watchLater.length;
 
     return(
@@ -32,6 +32,7 @@ export const WatchLater = () => {
                                 key={video._id} 
                                 videos = {video}
                                 deleteHandler = {removeFromWatchLater}
+                                toastProp = {toastProp}
                                 />
                             ) )
                         }

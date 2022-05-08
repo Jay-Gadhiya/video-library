@@ -8,7 +8,7 @@ import { removeFromLike } from "../../Utility-functions/likeHandler";
 
 export const LikedPage = () => {
 
-    const  { dataStoreState } = useData();
+    const  { dataStoreState, toastProp } = useData();
     const videosCount = dataStoreState.likedVideos.length;
 
     return(
@@ -31,6 +31,7 @@ export const LikedPage = () => {
                                 key={video._id} 
                                 videos = {video}
                                 deleteHandler = {removeFromLike}
+                                toastProp = {toastProp}
                                 />
                             ) )
                         }

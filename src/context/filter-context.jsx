@@ -1,5 +1,6 @@
 import { createContext, useContext, useReducer, useState } from "react";
 import { filterReducer } from "../Reducer/filterReducer";
+import toast, { Toaster } from 'react-hot-toast';
 
 const FilterContext = createContext();
 const useFilter = () => useContext(FilterContext);
@@ -14,6 +15,7 @@ const FilterProvider = ({ children }) => {
     return (
         <FilterContext.Provider value={{ filterState, filterDispatch, searchedVideo, setSearchedVideo }}>
             { children }
+            <Toaster position="top-center" reverseOrder={true} />
         </FilterContext.Provider>
     )
 }
