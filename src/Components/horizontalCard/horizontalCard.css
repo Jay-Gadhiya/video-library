@@ -13,7 +13,7 @@
     background-color: var(--grey-hover);
 }
 
-.horizontal-card-body {
+.horizontal-card-body { 
     color: var(--white-default);
     width: 100%;
     max-width: 35rem;
@@ -91,5 +91,9 @@
         color: var(--white-default);
         padding: 2px 4px;
         border-radius: 3px;
+    }
+
+    .trash-icon {
+        font-size: x-large;
     }
 }
