@@ -5,6 +5,7 @@
     padding-top: 1rem;
     height: calc(100vh - 4rem);
     overflow: auto;
+    margin-bottom: 3rem;
 }
 
 .horizontal-hero-img {
