@@ -115,3 +115,18 @@
 .watched {
     color: var(--active-color);
 }
+
+@media screen and (max-width : 700px) {
+    
+    .vid-main-container {
+        max-width: 25rem;
+    }
+
+    .vid-body-continer {
+        width: 100%;
+    }
+
+    .vid-title {
+        width: 15rem;
+    }
+}

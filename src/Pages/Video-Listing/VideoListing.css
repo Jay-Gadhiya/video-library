@@ -76,6 +76,13 @@ body {
     justify-content: center;
 }
 
+.msg-heading {
+    color: var(--white-color);
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
 
 /* scroll bar */
 /* width */
@@ -98,3 +105,5 @@ body {
   ::-webkit-scrollbar-thumb:hover {
     background: #555;
   }
+
+

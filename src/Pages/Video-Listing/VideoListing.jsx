@@ -42,7 +42,7 @@ export const VideoListing = () => {
                 className={`filter-chip ${
                   filterState.category === category.categoryName && "chip-color"
                 }`}
-              >
+              > 
                 {category.categoryName}
               </div>
             ))}

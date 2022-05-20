@@ -18,6 +18,11 @@ export const PlaylistPage = () => {
                 <Aside />
 
                 <div className="filter-and-main-flex">
+                    {
+                        playlistState.playlists.length === 0
+                        &&
+                        <h1 className="msg-heading">No playlist added</h1>
+                    }
                     <main className="vid-listing-container" >
                        {
                            playlistState.playlists.map( playlist => (
