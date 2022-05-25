@@ -115,7 +115,7 @@ export const videos = [
     category : "gaming",
     duration : "08:49",
     views : "1.4M",
-    channelAvatar : "https://yt3.ggpht.com/IqDB7kMJC5KEyqoeonPr7nVmOc5A4xeil_Et8CX06_cLA3JcVYzobSQFvF9ee2jZ0WAOeVvb=s88-c-k-c0x00ffffff-no-rj"
+    channelAvatar : "https://yt3.ggpht.com/tC7T8-4MvARqycrxkYbYQh5ygYMjqIn4ET9s-OAjmWeM349qscepubONTcBvb_vG43jwW_Xi_g=s48-c-k-c0x00ffffff-no-rj"
   },
 
   // Ted

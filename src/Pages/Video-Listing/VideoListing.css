@@ -26,7 +26,6 @@ body {
     display: flex;
     flex-direction: column;
     width: 100%;
-    margin-bottom: 3rem;
 }
 
 /* filter  */
@@ -82,6 +81,10 @@ body {
     display: flex;
     justify-content: center;
     margin-top: 1rem;
+}
+
+.show-text {
+    color: #a8a4a4;
 }
 
 

@@ -6,6 +6,7 @@ import { addToPlaylistHandler, createPlaylistHandler, deletePlaylistVideoHandler
 import { useAuth } from '../../context/authentication-context';
 import { useNavigate } from 'react-router-dom';
 import { useData } from '../../context/dataStore';
+import { videoOperation } from '../../Utility-functions/videoOperation';
 
 export const PlaylistModal = ({ playlistVideo, setShowModal }) => {
 
@@ -15,19 +16,16 @@ export const PlaylistModal = ({ playlistVideo, setShowModal }) => {
     const { toastProp } = useData();
     const navigate = useNavigate();
 
-    const videoOperation = (playlistId, videos) => {
-        videos?.find(item => item._id === playlistVideo._id)
-        ?
-        deletePlaylistVideoHandler(authState, playlistVideo._id, undefined, playlistId, playlistDispatch, toastProp)
-        :
-        addToPlaylistHandler(authState, playlistDispatch, playlistId, playlistVideo, toastProp)
-    }
+   
 
     const createPlaylist = (e) => {
         e.preventDefault();
-        createPlaylistHandler(playListTitle, authState, playlistDispatch, navigate);
+        
+        createPlaylistHandler(playListTitle, authState, playlistDispatch, navigate, playlistVideo, toastProp);
         setPlayListTitle({title : ""});
     }
+
+    
 
 
     return (
@@ -45,7 +43,7 @@ export const PlaylistModal = ({ playlistVideo, setShowModal }) => {
                             playlistState.playlists.map( playlist => (
                                 <label key={playlist._id} className='playlist-label' htmlFor="playlist-select">
                                     <input
-                                    onClick={ () => videoOperation(playlist._id, playlist.videos) }
+                                    onClick={ () => videoOperation(playlist._id, playlist.videos, authState, playlistVideo, playlistDispatch, toastProp) }
                                     checked={ playlist.videos.find(item => item._id === playlistVideo._id) ? true : false }
                                     className='playlist-checkbox' 
                                     type="checkbox" 

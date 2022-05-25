@@ -24,7 +24,7 @@ export const PlaylistCard = ({ playlist }) => {
                 <figure className="playlist-img-container">
                     <img className="playlist-img" src={playlistImg} alt="playlist" />
                     <div className="overlap-content">
-                        <span>0</span>
+                        <span>{playlist.videos.length}</span>
                         <CgPlayList />
                     </div>
                 </figure>

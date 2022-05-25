@@ -16,6 +16,8 @@ import { addToLike, removeFromLike } from "../../Utility-functions/likeHandler";
 import { addToWatchLater, removeFromWatchLater } from "../../Utility-functions/watchLaterHandler";
 import { useState } from "react";
 import { PlaylistModal } from "../../Components/playlistModal/playlistModal";
+import {CopyToClipboard} from 'react-copy-to-clipboard';
+import toast from "react-hot-toast";
 
 export const VideoPlayer = () => {
 
@@ -27,6 +29,10 @@ export const VideoPlayer = () => {
     const video = dataStoreState.videos.length !== 0 && dataStoreState.videos.find( video => videoId === video._id );
     const isLiked = dataStoreState.likedVideos.find(item => item._id === video._id);
     const isWatched = dataStoreState.watchLater.find(item => item._id === video._id);
+
+    const LinkCopyToClipboard = () => {
+        toast.success('Url Copy To Clipboard',toastProp);
+    }
 
 
     return (
@@ -97,22 +103,14 @@ export const VideoPlayer = () => {
                                     <CgPlayList className="vid-icon-save" />
                                     <p className="option-name" >Save</p>
                                 </div>
-                                <div className="vid-option">
-                                    <IoIosShareAlt className="vid-player-icon" />
-                                    <p className="option-name" >Share</p>
-                                </div>                              
+                                <CopyToClipboard text={window.location.href}>
+                                    <div onClick={ LinkCopyToClipboard } className="vid-option">
+                                        <IoIosShareAlt className="vid-player-icon" />
+                                        <p className="option-name" >Share</p>
+                                    </div>
+                                </CopyToClipboard>                              
                                 
                             </div>
-                        </div>
-                    </div>
-
-                    <div className="notes-container">
-                        <p className="note-title">Notes</p>
-                        <input className="notes-input" type="text" name="title" placeholder="Title" />
-                        <textarea className="notes-input notes-textarea" placeholder="Write note..." name="note" cols="21" rows="2"></textarea>
-                        <div className="notes-btns">
-                            <button className="btn pading btn-primary ">Save</button>
-                            <button className="btn btn-primary-outline pading border">Discard</button>
                         </div>
                     </div>
 
