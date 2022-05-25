@@ -22,7 +22,7 @@ export const LikedPage = () => {
                     <div className="like-img-and-info">
                         <img className="horizontal-hero-img" src={pageSideImg} alt="like" />
                         <p className="liked-vid-heading">Liked videos</p>
-                        <p className="liked-vid-count" >{videosCount} Videos</p>
+                        <p className="liked-vid-count" >{`${videosCount} ${videosCount === 0 || videosCount === 1 ? "Video" : "Videos"}`}</p>
                     </div>
                     <div className="card-show">
                         {
