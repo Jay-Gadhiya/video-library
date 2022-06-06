@@ -1,5 +1,6 @@
 import { getAllPlaylist, postNewPlaylist, deletePlaylist, getPlaylistVideos, postVideoPlaylist, deleteVideoPlaylist } from "../services/playlistService";
 import toast from 'react-hot-toast';
+import { videoOperation } from "./videoOperation";
 
 export const getPlaylistHandler = async (authState, playlistDispatch) => {
 
@@ -16,17 +17,22 @@ export const getPlaylistHandler = async (authState, playlistDispatch) => {
 }
 
 
-export const createPlaylistHandler = async (playListTitle, authState, playlistDispatch, navigate) => {
+export const createPlaylistHandler = async (playListTitle, authState, playlistDispatch, navigate, playlistVideo, toastProp) => {
 
     if(authState.token){
         try {
             const res = await postNewPlaylist(authState.token, playListTitle);
+
             if(res.status === 201){
+
                 playlistDispatch({ type : "PLAYLISTS", payload : res.data.playlists });
+                const newPlaylist = res.data.playlists[res.data.playlists.length - 1]
+                videoOperation(newPlaylist._id, newPlaylist.videos, authState, playlistVideo, playlistDispatch, toastProp);
+                
             }
-            
+             
         } catch (error) {
-            alert(error);
+            console.log(error);
         }
     }
     else {
@@ -75,6 +81,8 @@ export const addToPlaylistHandler = async ( authState, playlistDispatch, playLis
             
         } catch (error) {
             toast.error('Something went wrong',toastProp);
+            console.log(error);
+
         }
 }
 

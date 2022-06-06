@@ -32,7 +32,8 @@ export const PlaylistVideos = () => {
               alt="like"
             />
             <p className="liked-vid-heading">Playlist {playlist.title.title}</p>
-            <p className="liked-vid-count">{playlistVideosLength} Videos</p>
+            <p className="liked-vid-count" >{`${playlistVideosLength} ${playlistVideosLength === 0 || playlistVideosLength === 1 ? "Video" : "Videos"}`}</p>
+            
           </div>
           <div className="card-show">
             {

@@ -49,9 +49,19 @@ export const VideoListing = () => {
           </div>
 
           <main className="vid-listing-container">
-            {filteredBySearchedData.map((video) => (
-              <VideoCard key={video._id} video={video} />
-            ))}
+            {
+              filteredBySearchedData.length === 0
+              ?
+              <h1 className="show-text">No videos found</h1>
+              :
+              <>
+                {filteredBySearchedData.map((video) => (
+                <VideoCard key={video._id} video={video} />
+                ))}
+              </>
+
+            }
+            
           </main>
         </div>
       </div>

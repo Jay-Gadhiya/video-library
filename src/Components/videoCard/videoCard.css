@@ -49,7 +49,8 @@
     font-size: 15px;
     font-weight: 600;
     line-height: 20px;
-    width: 13.5rem;
+    width: 100%;
+    max-width: 13.5rem;
 }
 
 .vid-channel {
@@ -69,11 +70,11 @@
     font-size: 1.5rem;
     font-weight: bolder;
     cursor: pointer;
-    margin-left: auto;
 }
 
 .menu-wrapper {
     position: relative;
+    margin-left: auto;
 }
 
 .menu-options-wrapper {
@@ -126,7 +127,5 @@
         width: 100%;
     }
 
-    .vid-title {
-        width: 15rem;
-    }
+    
 }

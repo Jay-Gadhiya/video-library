@@ -24,8 +24,12 @@ export const HistoryPage = () => {
                     <div className="like-img-and-info">
                         <img className="horizontal-hero-img" src={pageSideImg} alt="like" />
                         <p className="liked-vid-heading">History videos</p>
-                        <p className="liked-vid-count" >{videosCount} Videos</p>
-                        <button onClick={() => clearTheHistory(authState, dataStoreDispatch, toastProp)} className="btn btn-primary-outline btn-clear-history">Clear History</button>
+                        <p className="liked-vid-count" >{`${videosCount} ${videosCount === 0 || videosCount === 1 ? "Video" : "Videos"}`}</p>
+                        {
+                            videosCount > 0 
+                            &&
+                            <button onClick={() => clearTheHistory(authState, dataStoreDispatch, toastProp)} className="btn btn-primary-outline btn-clear-history">Clear History</button>
+                        }
                     </div>
                     <div className="card-show">
                         {
