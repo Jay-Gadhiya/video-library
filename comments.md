@@ -1,4 +1,4 @@
-Add favicon and title
-Remove add notes UI from the single video page
-Add copy to clipboard functionality when clicking on the share icon
-Refactor styling of cards and pages.
+1. Add favicon and title
+2. Remove add notes UI from the single video page
+3. Add copy to clipboard functionality when clicking on the share icon
+4. Refactor styling of cards and pages.
